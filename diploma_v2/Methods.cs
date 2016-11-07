@@ -26,7 +26,7 @@ namespace diploma_v2
             double funval; //значение целевой функции
             int count = 1;
 
-            Console.Clear();
+           // Console.Clear();
 
             MatrHes(ref t, ref t.z, t.m, step);
             if (t.m)
@@ -134,7 +134,7 @@ namespace diploma_v2
             Vector y = new Vector(dimX);
             bool flag = true;
 
-            Console.Clear();
+            //Console.Clear();
 
             if (t.m)
             {
@@ -245,7 +245,7 @@ namespace diploma_v2
             int j, count = 0;
             bool flag = true;
 
-            Console.Clear();
+           // Console.Clear();
 
             if (t.m)
             {

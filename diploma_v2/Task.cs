@@ -23,8 +23,8 @@ namespace diploma_v2
         public double step;                 // шаг интегрирвоания
         public double pk;
         public int n;                       // количество значений функций для численного дифференцирования
-        public bool m = true;                      // способ назождения градиента. Если true - численно, если false - аналитически
-        public int it = 2;
+        public bool m = true;               // способ назождения градиента. Если true - численно, если false - аналитически
+        public int it = 2;                  // количество итераций
 
         /// <summary>
         /// Матрица вторых производных, записанная построчно в вектор
@@ -52,12 +52,14 @@ namespace diploma_v2
         public string[] intsdu;             //Массив производных интегральных частей dx/dt по управлению, введенный пользователем
         public string[,] xdtdx;              //Массив производных термнальных частей dx/dt по другому х, введенный пользователем
         public string[,] intsdx;             //Массив производных интегральной части dx/dt по другому х, введенный пользователем
-        public string[] z0;                 // Начльное приближение для параметров упарвления и точки переклбчения
+        public string[] z0;                 // Начальное приближение для параметров упаравления и точки переключения
 
         public bool isInitialized = false;
 
 
-        //инициализация задачи
+        /// <summary>
+        /// инициализация задачи
+        /// </summary>
         public void Init()
         {
             dimU = 1;
@@ -92,7 +94,13 @@ namespace diploma_v2
             Program.discr = discr;
         }
 
-        // целевая функция
+        /// <summary>
+        /// целевая функция
+        /// </summary>
+        /// <param name="t"> Задача</param>
+        /// <param name="z">Структура управления и моментов переключения</param>
+        /// <param name="h"></param>
+        /// <returns></returns>
         public double faim(ref Task t, ref Vector z, double h)
         {
             Vector x = new Vector(t.dimX);

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -8,6 +9,14 @@ namespace diploma_v2
 {
     partial class Program
     {
+        [DllImport("kernel32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool AllocConsole();
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool FreeConsole();
+
         /// <summary>
         /// Начльное время
         /// </summary>
@@ -58,6 +67,32 @@ namespace diploma_v2
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+        }
+
+        public static void Run()
+        {
+            AllocConsole();
+            for (int i = 0; i < 1; i++)
+            {
+                if (Program.method == "Newton")
+                {
+                    Program.Newton(ref Program.task);
+                }
+                else if (Program.method == "DFP")
+                {
+                    Program.DFP(ref Program.task);
+                }
+                else
+                {
+                    Program.Spusk(ref Program.task);
+                }
+                Console.WriteLine("Press any key to continue");
+                Console.ReadKey();
+            }
+            FreeConsole();
+
+            ContinueCalculation dialog = new ContinueCalculation();
+            dialog.ShowDialog();
         }
     }
 }

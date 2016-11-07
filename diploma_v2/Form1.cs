@@ -36,8 +36,7 @@ namespace diploma_v2
             testDialog.Dispose();
             if (Program.task.isInitialized)
             {
-                string[] inputMask =
-                                    new string[Program.task.dimX * (6 + 2 * Program.task.dimX) + Program.task.dimAllP + 3];
+                string[] inputMask = new string[Program.task.dimX * (6 + 2 * Program.task.dimX) + Program.task.dimAllP + 3];
                 StringBuilder sb = new StringBuilder();
                 GetBlankTask(ref inputMask, ref sb);
                 taskToolStripMenuItem.Enabled = true;
@@ -268,10 +267,10 @@ namespace diploma_v2
 
             GetInfoFromTextBox(ref str);
 
-            
 
-            AllocConsole();
-            for (int i = 0; i < Program.task.it; i++)
+
+            /*AllocConsole();
+            for (int i = 0; i < 1; i++)
             {
                 if (Program.method == "Newton")
                 {
@@ -285,12 +284,22 @@ namespace diploma_v2
                 {
                     Program.Spusk(ref Program.task);
                 }
+                Console.WriteLine("Press any key to continue");
                 Console.ReadKey();
             }
             FreeConsole();
+
+            ContinueCalculation dialog = new ContinueCalculation();
+            dialog.ShowDialog(this);*/
+
+            Program.Run();
+            
         }
 
-        // Получить данные из главного текстового окна
+        /// <summary>
+        /// Получить данные из главного текстового окна
+        /// </summary>
+        /// <param name="str">Массив строк взятых из TextBox</param>
         private static void GetInfoFromTextBox(ref string[] str)
         {
             string[] tmp1 = new string[Program.dimX * (6 + 2 * Program.dimX) + Program.dimAllP + 1];
@@ -432,11 +441,11 @@ namespace diploma_v2
             string[] funcs = textBox1.Text.Split('\r');
             string[] str = new string[2];
             str[0] = String.Join("\r\n", config);
-            str[1] = String.Join("\r\n", funcs);
+            str[1] = String.Join("\r", funcs);
             string strS = String.Join("\r\n", str);
 
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            saveFileDialog1.Title = "Saving task";
+            saveFileDialog1.Title = "Сохранить задачу";
             saveFileDialog1.ShowDialog();
             // получаем выбранный файл
             string filename = saveFileDialog1.FileName;

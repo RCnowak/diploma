@@ -81,22 +81,22 @@ namespace diploma_v2
         /// <param name="u">Управление, куда сохранится результат функции.</param>
         public static void control(double t, ref Vector z, ref double[] u)
         {
-            if (t < t0)
+            for (int i = 0; i < dimU; i++)
             {
-                for (int j = 0; j < dimU; j++)
-                {
-                    u[j] = 0;
-                }
+                u[i] = 0;
             }
             // время t из первого интервала
             if ((t >= t0) && (t < z[dimU * dimP]))
             {
                 for (int j = 0; j < dimU; j++)
                 {
-                    u[j] = z[j * dimP];
+                    for (int k = 0; k < dimP; k++)
+                    {
+                        u[j] += z[j * dimP + k] * Math.Pow(t, k);
+                    }
                 }
             }
-            else
+            else if ((t >= z[dimU * dimP]) && (t < z[dimTk * (dimU * dimP + 1) - 1]))
             {
                 for (int i = 1; i < dimTk; i++)
                 {
@@ -105,17 +105,23 @@ namespace diploma_v2
                     {
                         for (int j = 0; j < dimU; j++)
                         {
-                            u[j] = z[j * dimP + i * (dimU * dimP + 1)];
+                            for (int k = 0; k < dimP; k++)
+                            {
+                                u[j] += z[j * dimP + i * (dimU * dimP + 1) + k] * Math.Pow(t, k);
+                            }
                         }
                     }
                 }
             }
             // время t из последнего интервала
-            if ((t >= z[dimTk * (dimU * dimP + 1) - 1]))
+            else
             {
                 for (int j = 0; j < dimU; j++)
                 {
-                    u[j] = z[j * dimP + dimTk * (dimU * dimP + 1)];
+                    for (int k = 0; k < dimP; k++)
+                    {
+                        u[j] += z[j * dimP + dimTk * (dimU * dimP + 1) + k] * Math.Pow(t, k);
+                    }
                 }
             }
             // 
