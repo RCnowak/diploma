@@ -1,21 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Threading;
 
 namespace diploma_v2
 {
     partial class Program
     {
-        [DllImport("kernel32.dll", SetLastError = true)]
+        /*[DllImport("kernel32.dll", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         private static extern bool AllocConsole();
 
         [DllImport("kernel32.dll", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
-        private static extern bool FreeConsole();
+        private static extern bool FreeConsole();*/
 
         /// <summary>
         /// Начльное время
@@ -52,8 +55,13 @@ namespace diploma_v2
 
         public static double step = 0.01;   // шаг
 
+        public static TextBox logTextBox;  // Окно вывода логов вычисления
+
         public static Task task = new Task();
-        public static string method = "Grad";
+
+        public static string method = "Grad"; // Дефолтный метод
+
+        public static NumberFormatInfo nfi = CultureInfo.CreateSpecificCulture("en-US").NumberFormat; // Правила парсинга чисел
 
         /// <summary>
         /// Точка входа в программу.
@@ -71,7 +79,9 @@ namespace diploma_v2
 
         public static void Run()
         {
-            AllocConsole();
+
+            //AllocConsole();
+            Dispatcher.CurrentDispatcher.Invoke(new Action(() => { Program.logTextBox.Text = String.Format("Запущен метод {0}", Program.method); }), DispatcherPriority.ContextIdle);
             for (int i = 0; i < 1; i++)
             {
                 if (Program.method == "Newton")
@@ -86,10 +96,10 @@ namespace diploma_v2
                 {
                     Program.Spusk(ref Program.task);
                 }
-                Console.WriteLine("Press any key to continue");
-                Console.ReadKey();
+                //Console.WriteLine("Press any key to continue");
+                //Console.ReadKey();
             }
-            FreeConsole();
+            //FreeConsole();
 
             ContinueCalculation dialog = new ContinueCalculation();
             dialog.ShowDialog();

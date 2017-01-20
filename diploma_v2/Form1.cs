@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -14,6 +15,7 @@ namespace diploma_v2
 {
     public partial class Form1 : Form
     {
+        /*
         private string[] inputMask;
         [DllImport("kernel32.dll", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
@@ -22,10 +24,12 @@ namespace diploma_v2
         [DllImport("kernel32.dll", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         private static extern bool FreeConsole();
+        */
 
         public Form1()
         {
             InitializeComponent();
+            Program.logTextBox = logTextBox;
         }
 
         // Создать новую задачу
@@ -59,13 +63,13 @@ namespace diploma_v2
                 string[] inputMask;
                 try
                 {
-                    Program.task.dimX = Convert.ToInt32(result[1]);
-                    Program.task.dimP = Convert.ToInt32(result[3]);
-                    Program.task.t0 = Convert.ToInt32(result[5]);
-                    Program.task.T = Convert.ToInt32(result[7]);
-                    Program.task.dimTk = Convert.ToInt32(result[9]);
-                    Program.task.step = Convert.ToDouble(result[11]);
-                    Program.task.m = Convert.ToBoolean(result[13]);
+                    Program.task.dimX = Convert.ToInt32(result[1], Program.nfi);
+                    Program.task.dimP = Convert.ToInt32(result[3], Program.nfi);
+                    Program.task.t0 = Convert.ToInt32(result[5], Program.nfi);
+                    Program.task.T = Convert.ToInt32(result[7], Program.nfi);
+                    Program.task.dimTk = Convert.ToInt32(result[9], Program.nfi);
+                    Program.task.step = Convert.ToDouble(result[11], Program.nfi);
+                    Program.task.m = Convert.ToBoolean(result[13], Program.nfi);
                     Program.task.Init();
                     Program.task.isInitialized = true;
 
@@ -94,7 +98,7 @@ namespace diploma_v2
                 }
                 catch
                 {
-                    MessageBox.Show("Wrong format of data!");
+                    MessageBox.Show("Данные введены в неверном формате!");
                 }
             }
             catch
@@ -260,40 +264,21 @@ namespace diploma_v2
             textBox1.Text = string.Join("\r\n", inputMask);*/
         }
 
-        // Запуск решения
+        // Запуск решения из основной панели
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
             string[] str = textBox1.Text.Split('\r');
-
             GetInfoFromTextBox(ref str);
 
-
-
-            /*AllocConsole();
-            for (int i = 0; i < 1; i++)
-            {
-                if (Program.method == "Newton")
-                {
-                    Program.Newton(ref Program.task);
-                }
-                else if (Program.method == "DFP")
-                {
-                    Program.DFP(ref Program.task);
-                }
-                else
-                {
-                    Program.Spusk(ref Program.task);
-                }
-                Console.WriteLine("Press any key to continue");
-                Console.ReadKey();
-            }
-            FreeConsole();
-
-            ContinueCalculation dialog = new ContinueCalculation();
-            dialog.ShowDialog(this);*/
+            Program.Run();
+        }
+        // Запуск решения из меню Task
+        private void runToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string[] str = textBox1.Text.Split('\r');
+            GetInfoFromTextBox(ref str);
 
             Program.Run();
-            
         }
 
         /// <summary>
@@ -376,42 +361,25 @@ namespace diploma_v2
         private void gradientToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Program.method = "Gradient";
+            toolStripDropDownButton1.Text = "Градиентный метод";
+            Program.logTextBox.Text = String.Format("Выбран метод {0}", Program.method);
         }
 
         private void newtonToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Program.method = "Newton";
+            toolStripDropDownButton1.Text = "Метод Ньютона";
+            Program.logTextBox.Text = String.Format("Выбран метод {0}", Program.method);
         }
 
         private void dFPToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Program.method = "DFP";
+            toolStripDropDownButton1.Text = "Метод ДФП";
+            Program.logTextBox.Text = String.Format("Выбран метод {0}", Program.method);
         }
 
-        private void runToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            string[] str = textBox1.Text.Split('\r');
 
-            GetInfoFromTextBox(ref str);
-
-
-
-            AllocConsole();
-            if (Program.method == "Newton")
-            {
-                Program.Newton(ref Program.task);
-            }
-            else if (Program.method == "DFP")
-            {
-                Program.DFP(ref Program.task);
-            }
-            else
-            {
-                Program.Spusk(ref Program.task);
-            }
-            Console.ReadKey();
-            FreeConsole();
-        }
 
         private void OptionsToolStripMenuItem_Click(object sender, EventArgs e)
         {

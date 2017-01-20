@@ -157,12 +157,11 @@ namespace diploma_v2
                 else
                 {
                     Console.WriteLine("Error! Wrong index of x");
-                    Console.ReadLine();
                     Process.Start(Assembly.GetExecutingAssembly().Location);            // Ошибка парсинга, перезагрузка приложения
                     Environment.Exit(0);
                 }
             }
-            return Int32.Parse(index);
+            return Convert.ToInt32(index, Program.nfi);
 
         }
 
@@ -172,7 +171,7 @@ namespace diploma_v2
             double number = 0;
             try
             {
-                number = double.Parse(v);
+                number = Convert.ToDouble(v, Program.nfi);
             }
             catch
             {
