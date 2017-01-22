@@ -31,14 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContinueCalculation));
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.OKbutton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.Solve = new System.Windows.Forms.Button();
             this.DFP = new System.Windows.Forms.RadioButton();
             this.Gradient = new System.Windows.Forms.RadioButton();
             this.Newton = new System.Windows.Forms.RadioButton();
             this.mustBeSaved = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,19 +50,18 @@
             // 
             resources.ApplyResources(this.textBox1, "textBox1");
             this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
             // 
-            // button1
+            // OKbutton
             // 
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            resources.ApplyResources(this.OKbutton, "OKbutton");
+            this.OKbutton.Name = "OKbutton";
+            this.OKbutton.UseVisualStyleBackColor = true;
+            this.OKbutton.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel1
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.Solve);
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.DFP);
             this.panel1.Controls.Add(this.Gradient);
             this.panel1.Controls.Add(this.Newton);
@@ -71,24 +69,13 @@
             this.panel1.Name = "panel1";
             this.panel1.Tag = "Продолжить...";
             // 
-            // label2
-            // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
-            // 
-            // Solve
-            // 
-            resources.ApplyResources(this.Solve, "Solve");
-            this.Solve.Name = "Solve";
-            this.Solve.UseVisualStyleBackColor = true;
-            this.Solve.Click += new System.EventHandler(this.Solve_Click);
-            // 
             // DFP
             // 
             resources.ApplyResources(this.DFP, "DFP");
             this.DFP.Name = "DFP";
             this.DFP.TabStop = true;
             this.DFP.UseVisualStyleBackColor = true;
+            this.DFP.CheckedChanged += new System.EventHandler(this.DFP_CheckedChanged);
             // 
             // Gradient
             // 
@@ -96,6 +83,7 @@
             this.Gradient.Name = "Gradient";
             this.Gradient.TabStop = true;
             this.Gradient.UseVisualStyleBackColor = true;
+            this.Gradient.CheckedChanged += new System.EventHandler(this.Gradient_CheckedChanged);
             // 
             // Newton
             // 
@@ -104,6 +92,7 @@
             this.Newton.Name = "Newton";
             this.Newton.TabStop = true;
             this.Newton.UseVisualStyleBackColor = true;
+            this.Newton.CheckedChanged += new System.EventHandler(this.Newton_CheckedChanged);
             // 
             // mustBeSaved
             // 
@@ -113,13 +102,21 @@
             this.mustBeSaved.Name = "mustBeSaved";
             this.mustBeSaved.UseVisualStyleBackColor = true;
             // 
+            // checkBox1
+            // 
+            resources.ApplyResources(this.checkBox1, "checkBox1");
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // ContinueCalculation
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.mustBeSaved);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.OKbutton);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Name = "ContinueCalculation";
@@ -134,13 +131,12 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button OKbutton;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button Solve;
         private System.Windows.Forms.RadioButton DFP;
         private System.Windows.Forms.RadioButton Gradient;
         private System.Windows.Forms.RadioButton Newton;
         private System.Windows.Forms.CheckBox mustBeSaved;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

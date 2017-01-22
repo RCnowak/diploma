@@ -21,13 +21,13 @@ namespace diploma_v2
         {
             try
             {
-                Program.task.eps = Convert.ToDouble(textBox1.Text);
-                Program.task.ep = Convert.ToDouble(textBox2.Text);
-                Program.eps = Convert.ToDouble(textBox1.Text);
-                Program.ep = Convert.ToDouble(textBox2.Text);
-                Program.task.discr = Convert.ToInt32(textBox3.Text);
-                Program.task.it = Convert.ToInt32(textBox4.Text);
-                Program.task.n = Convert.ToInt32(textBox5.Text);
+                Program.task.eps = Convert.ToDouble(textBox1.Text, Program.nfi);
+                Program.task.ep = Convert.ToDouble(textBox2.Text, Program.nfi);
+                Program.eps = Convert.ToDouble(textBox1.Text, Program.nfi);
+                Program.ep = Convert.ToDouble(textBox2.Text, Program.nfi);
+                Program.task.discr = Convert.ToInt32(textBox3.Text, Program.nfi);
+                Program.task.it = Convert.ToInt32(textBox4.Text, Program.nfi);
+                Program.task.n = Convert.ToInt32(textBox5.Text, Program.nfi);
 
                 this.Close();
             }

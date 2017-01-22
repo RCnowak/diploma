@@ -21,12 +21,12 @@ namespace diploma_v2
         {
             try
             {
-                Program.task.dimX = Convert.ToInt32(textBox1.Text);
-                Program.task.dimP = Convert.ToInt32(textBox2.Text);
-                Program.task.t0 = Convert.ToInt32(textBox3.Text);
-                Program.task.T = Convert.ToInt32(textBox4.Text);
-                Program.task.dimTk = Convert.ToInt32(textBox5.Text);
-                Program.task.step = Convert.ToDouble(textBox6.Text);
+                Program.task.dimX = Convert.ToInt32(textBox1.Text, Program.nfi);
+                Program.task.dimP = Convert.ToInt32(textBox2.Text, Program.nfi);
+                Program.task.t0 = Convert.ToInt32(textBox3.Text, Program.nfi);
+                Program.task.T = Convert.ToInt32(textBox4.Text, Program.nfi);
+                Program.task.dimTk = Convert.ToInt32(textBox5.Text, Program.nfi);
+                Program.task.step = Convert.ToDouble(textBox6.Text, Program.nfi);
                 Program.task.m = radioButton2.Checked;
                 Program.task.Init();
                 Program.task.isInitialized = true;

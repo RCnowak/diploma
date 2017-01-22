@@ -10,3 +10,6 @@ F:\University\Diploma\diploma_v2\diploma.git\diploma_v2\obj\Release\diploma_v2.e
 F:\University\Diploma\diploma_v2\diploma.git\diploma_v2\obj\Release\diploma_v2.pdb
 F:\University\Diploma\diploma_v2\diploma.git\diploma_v2\obj\Release\diploma_v2.csprojResolveAssemblyReference.cache
 F:\University\Diploma\diploma_v2\diploma.git\diploma_v2\obj\Release\diploma_v2.ContinueCalculation.resources
+F:\University\Diploma\diploma_v2\diploma.git\diploma_v2\bin\Release\aa-DJ\diploma_v2.resources.dll
+F:\University\Diploma\diploma_v2\diploma.git\diploma_v2\obj\Release\diploma_v2.ContinueCalculation.aa-DJ.resources
+F:\University\Diploma\diploma_v2\diploma.git\diploma_v2\obj\Release\aa-DJ\diploma_v2.resources.dll

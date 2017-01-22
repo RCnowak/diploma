@@ -85,6 +85,9 @@
     <Compile Include="SLU.cs" />
     <Compile Include="Task.cs" />
     <Compile Include="ZKP.cs" />
+    <EmbeddedResource Include="ContinueCalculation.aa-DJ.resx">
+      <DependentUpon>ContinueCalculation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ContinueCalculation.resx">
       <DependentUpon>ContinueCalculation.cs</DependentUpon>
     </EmbeddedResource>

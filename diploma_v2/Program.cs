@@ -12,13 +12,6 @@ namespace diploma_v2
 {
     partial class Program
     {
-        /*[DllImport("kernel32.dll", SetLastError = true)]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        private static extern bool AllocConsole();
-
-        [DllImport("kernel32.dll", SetLastError = true)]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        private static extern bool FreeConsole();*/
 
         /// <summary>
         /// Начльное время
@@ -45,6 +38,8 @@ namespace diploma_v2
         /// Размерность пространства параметров
         /// </summary>
         public static int dimAllP;          // размерность пространства параметров
+
+        public static double lastFunval;    // последнее значение целевой функции
         /// <summary>
         /// Частота дискретизации хранения
         /// </summary>
@@ -56,10 +51,11 @@ namespace diploma_v2
         public static double step = 0.01;   // шаг
 
         public static TextBox logTextBox;  // Окно вывода логов вычисления
+        public static Label status;        // Статус работы программы
 
         public static Task task = new Task();
 
-        public static string method = "Grad"; // Дефолтный метод
+        public static Method method = Method.Spusk; // Дефолтный метод
 
         public static NumberFormatInfo nfi = CultureInfo.CreateSpecificCulture("en-US").NumberFormat; // Правила парсинга чисел
 
@@ -79,16 +75,16 @@ namespace diploma_v2
 
         public static void Run()
         {
-
-            //AllocConsole();
-            Dispatcher.CurrentDispatcher.Invoke(new Action(() => { Program.logTextBox.Text = String.Format("Запущен метод {0}", Program.method); }), DispatcherPriority.ContextIdle);
+            Dispatcher.CurrentDispatcher.Invoke(new Action(() => {
+                Program.status.Text = String.Format("Запущен метод {0}", Program.method);
+            }), DispatcherPriority.ContextIdle);
             for (int i = 0; i < 1; i++)
             {
-                if (Program.method == "Newton")
+                if (Program.method == Method.Spusk)
                 {
                     Program.Newton(ref Program.task);
                 }
-                else if (Program.method == "DFP")
+                else if (Program.method == Method.DFP)
                 {
                     Program.DFP(ref Program.task);
                 }
@@ -96,13 +92,29 @@ namespace diploma_v2
                 {
                     Program.Spusk(ref Program.task);
                 }
-                //Console.WriteLine("Press any key to continue");
-                //Console.ReadKey();
             }
-            //FreeConsole();
 
+            Dispatcher.CurrentDispatcher.Invoke(new Action(() => {
+                Program.status.Text = "Вычисления закончены";
+            }), DispatcherPriority.ContextIdle);
             ContinueCalculation dialog = new ContinueCalculation();
             dialog.ShowDialog();
+            try
+            {
+                if (dialog.continueSolving)
+                {
+                    // присваиваем ответ в начальное приближение
+                    for (int i = 0; i < Program.task.dimAllP; i++)
+                    {
+                        Program.task.z0[i] = Program.task.z[i].ToString();
+                    }
+                    Program.Run();
+                }
+            }
+            catch
+            {
+
+            }
         }
     }
 }

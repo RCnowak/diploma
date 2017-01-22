@@ -12,10 +12,16 @@ namespace diploma_v2
 {
     public partial class ContinueCalculation : Form
     {
+        public Boolean continueSolving { get; set; }
+
         public ContinueCalculation()
         {
             InitializeComponent();
 
+            continueSolving = false;
+
+            textBox1.AppendText(String.Format("Используемый метод: {0}" + Environment.NewLine, Program.method));
+            textBox1.AppendText(String.Format("f = {0}" + Environment.NewLine, Program.lastFunval));
             for (int i = 0, k = 0, t = 1; i < Program.task.dimAllP; i++)
             {
                 for (int j = i; j - i < Program.dimP; j++)
@@ -45,31 +51,37 @@ namespace diploma_v2
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Title = "Сохранить задачу";
-            saveFileDialog.ShowDialog();
+            var result = saveFileDialog.ShowDialog();
 
             // сохраняем текст в файл
-            System.IO.File.WriteAllText(saveFileDialog.FileName, textBox1.Text);
-            MessageBox.Show("Файл сохранен");
+            if (result == DialogResult.OK)
+            {
+                System.IO.File.WriteAllText(saveFileDialog.FileName, textBox1.Text);
+                MessageBox.Show("Файл сохранен");
+            }
         }
 
-        private void Solve_Click(object sender, EventArgs e)
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            // присваиваем ответ в начальное приближение
-            for (int i = 0; i < Program.task.dimAllP; i++)
-            {
-                Program.task.z0[i] = Program.task.z[i].ToString();
-            }
+            Newton.Enabled = checkBox1.Enabled;
+            Gradient.Enabled = checkBox1.Enabled;
+            DFP.Enabled = checkBox1.Enabled;
+            continueSolving = checkBox1.Enabled;
+        }
 
-            if (Newton.Checked) {
-                Program.method = "Newton";
-            } else if (Gradient.Checked) {
-                Program.method = "Spusk";
-            } else {
-                Program.method = "DFP";
-            }
+        private void Newton_CheckedChanged(object sender, EventArgs e)
+        {
+            Program.method = Method.Newton;
+        }
 
-            Program.Run();
-            this.Close();
+        private void Gradient_CheckedChanged(object sender, EventArgs e)
+        {
+            Program.method = Method.Spusk;
+        }
+
+        private void DFP_CheckedChanged(object sender, EventArgs e)
+        {
+            Program.method = Method.DFP;
         }
     }
 }

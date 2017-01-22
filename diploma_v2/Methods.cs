@@ -7,6 +7,7 @@ using System.Windows.Threading;
 
 namespace diploma_v2
 {
+    enum Method { Newton, Spusk, DFP }; // Набор методов, для перечесления
     partial class Program
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace diploma_v2
             double funval; //значение целевой функции
             int count = 1;
 
-           // Console.Clear();
+            Dispatcher.CurrentDispatcher.Invoke(new Action(() => { Program.logTextBox.Text = ""; }), DispatcherPriority.ContextIdle);
 
             MatrHes(ref t, ref t.z, t.m, step);
             if (t.m)
@@ -39,18 +40,17 @@ namespace diploma_v2
                 Grad(ref t, ref t.z, ref g, step);
             }
 
-            Console.WriteLine("Initial gradient");
-            logTextBox.Text += "Initial gradient/n";
+            Dispatcher.CurrentDispatcher.Invoke(new Action(() => { Program.logTextBox.Text += "Initial gradient\r\n"; }), DispatcherPriority.ContextIdle);
             for (int i = 0; i < dimAllP; i++)
             {
-                Console.Write("g[{0}] = {1}          ", i, g[i]);
+                Dispatcher.CurrentDispatcher.Invoke(new Action(() => { Program.logTextBox.Text += String.Format("g[{0}] = {1}\r\n", i, g[i]); }), DispatcherPriority.ContextIdle);
             }
 
             funval = t.faim(ref t, ref t.z, step);  //начальное значение функции
-            logTextBox.Text += "f = {0}/n";
-            Console.WriteLine(" f = {0}", funval);
+            Dispatcher.CurrentDispatcher.Invoke(new Action(() => { Program.logTextBox.Text += String.Format("f = {0}\r\n", funval); }), DispatcherPriority.ContextIdle);
 
             Console.WriteLine(" Result");
+            Dispatcher.CurrentDispatcher.Invoke(new Action(() => { Program.logTextBox.Text += " Result\r\n"; }), DispatcherPriority.ContextIdle);
 
             // Проверка нормы градиента, возможно уже нет смысла решать задачу
             check = meg(g, dimAllP);
@@ -89,14 +89,14 @@ namespace diploma_v2
                     Grad(ref t, ref z2, ref g, step);
                 }
 
-                Console.WriteLine(" Iteration  -  {0}", count);
+                Dispatcher.CurrentDispatcher.Invoke(new Action(() => { Program.logTextBox.Text += String.Format(" Iteration  -  {0}\r\n", count); }), DispatcherPriority.ContextIdle);
                 for (int i = 0; i < dimAllP; i++)
                 {
-                    Console.WriteLine(" z [{0}] = {1}, g[{2}] = {3}", i + 1, z2[i], i + 1, g[i]);
+                    Dispatcher.CurrentDispatcher.Invoke(new Action(() => { Program.logTextBox.Text += String.Format("z[{0}] = {1}, g[{2}] = {3}\r\n", i + 1, z2[i], i + 1, g[i]); }), DispatcherPriority.ContextIdle);
                 }
 
                 funval = t.faim(ref t, ref z2, step);
-                Console.WriteLine(" f = {0}", funval);
+                Dispatcher.CurrentDispatcher.Invoke(new Action(() => { Program.logTextBox.Text += String.Format("f = {0}\r\n", funval); }), DispatcherPriority.ContextIdle);
 
                 if (meg(t.z - z2, dimAllP) < ep)
                 {
@@ -114,10 +114,11 @@ namespace diploma_v2
                 {
                     flag = false;
                 }
-                Console.WriteLine("  The solution is  ");
+                Program.lastFunval = funval;
+                Dispatcher.CurrentDispatcher.Invoke(new Action(() => { Program.logTextBox.Text += "  The solution is:\r\n"; }), DispatcherPriority.ContextIdle);
                 for (int i = 0; i < dimAllP; i++)
                 {
-                    Console.WriteLine(" z [{0}] = {1}  \n", i + 1, z2[i]);
+                    Dispatcher.CurrentDispatcher.Invoke(new Action(() => { Program.logTextBox.Text += String.Format("z[{0}] = {1}\r\n", i + 1, z2[i]); }), DispatcherPriority.ContextIdle);
                 }
             }
         }
@@ -137,7 +138,6 @@ namespace diploma_v2
             Vector y = new Vector(dimX);
             bool flag = true;
 
-            //Console.Clear();
             Dispatcher.CurrentDispatcher.Invoke(new Action(() => { Program.logTextBox.Text = ""; }), DispatcherPriority.ContextIdle);
 
             if (t.m)
@@ -150,20 +150,16 @@ namespace diploma_v2
             }
 
 
-            Console.WriteLine("Initial gradient");
             Dispatcher.CurrentDispatcher.Invoke(new Action(() => { Program.logTextBox.Text += "Initial gradient\r\n"; }), DispatcherPriority.ContextIdle);
             for (int i = 0; i < dimAllP; i++)
             {
-                Console.Write("g[{0}] = {1}          ", i, g[i]);
                 Dispatcher.CurrentDispatcher.Invoke(new Action(() => { Program.logTextBox.Text += String.Format("g[{0}] = {1}          \r\n", i, g[i]); }), DispatcherPriority.ContextIdle);
             }
 
 
             funval = t.faim(ref t, ref t.z, step);
-            //Console.WriteLine(" f = {0}", funval);
             Dispatcher.CurrentDispatcher.Invoke(new Action(() => { Program.logTextBox.Text += String.Format(" f = {0}\r\n", funval); }), DispatcherPriority.ContextIdle);
-
-            //Console.WriteLine(" Result ");
+            
             Dispatcher.CurrentDispatcher.Invoke(new Action(() => { Program.logTextBox.Text += " Result \r\n"; }), DispatcherPriority.ContextIdle);
 
             // В качестве проверки следуте использовать норму вектора градиента, так как в точке максимума градиент должен быть равен нулю
@@ -203,19 +199,15 @@ namespace diploma_v2
                 {
                     Grad(ref t, ref z2, ref g, step);
                 }
-
-                //Console.WriteLine(" Iteration  -  {0}", count);
+                
                 Dispatcher.CurrentDispatcher.Invoke(new Action(() => { Program.logTextBox.Text += String.Format(" Iteration  -  {0}\r\n", count); }), DispatcherPriority.ContextIdle);
-
-                //Console.WriteLine("");
+                
                 for (int i = 0; i < dimAllP; i++)
                 {
-                    //Console.WriteLine(" z [{0}] = {1}, g[{2}] = {3}", i + 1, z2[i], i + 1, g[i]);
                     Dispatcher.CurrentDispatcher.Invoke(new Action(() => { Program.logTextBox.Text += String.Format(" z [{0}] = {1}, g[{2}] = {3}\r\n", i + 1, z2[i], i + 1, g[i]); }), DispatcherPriority.ContextIdle);
                 }
 
                 funval = t.faim(ref t, ref z2, step);
-                //Console.WriteLine(" f = {0}", funval);
                 Dispatcher.CurrentDispatcher.Invoke(new Action(() => { Program.logTextBox.Text += String.Format(" f = {0}\r\n", funval); }), DispatcherPriority.ContextIdle);
 
                 // 
@@ -232,12 +224,11 @@ namespace diploma_v2
                     flag = false;
             }
 
-            //Console.WriteLine("   The solution is");
-            Dispatcher.CurrentDispatcher.Invoke(new Action(() => { Program.logTextBox.Text += "   The solution is"; }), DispatcherPriority.ContextIdle);
+            Program.lastFunval = funval;
+            Dispatcher.CurrentDispatcher.Invoke(new Action(() => { Program.logTextBox.Text += " The solution is:"; }), DispatcherPriority.ContextIdle);
             Vector tmpZ = t.z;
             for (int i = 0; i < dimAllP; i++)
             {
-                //Console.WriteLine(" z [{0}] = {1} ", i + 1, t.z[i]);
                 Dispatcher.CurrentDispatcher.Invoke(new Action(() => { Program.logTextBox.Text += String.Format(" z [{0}] = {1} \r\n", i + 1, tmpZ[i]); }), DispatcherPriority.ContextIdle);
             }
         }
@@ -259,7 +250,7 @@ namespace diploma_v2
             int j, count = 0;
             bool flag = true;
 
-           // Console.Clear();
+            Dispatcher.CurrentDispatcher.Invoke(new Action(() => { Program.logTextBox.Text = ""; }), DispatcherPriority.ContextIdle);
 
             if (t.m)
             {
@@ -276,16 +267,16 @@ namespace diploma_v2
                     else
                         t.Q[i, j] = 0;
 
-            Console.WriteLine("Initial gradient");
+            Dispatcher.CurrentDispatcher.Invoke(new Action(() => { Program.logTextBox.Text += "Initial gradient\r\n"; }), DispatcherPriority.ContextIdle);
             for (int i = 0; i < dimAllP; i++)
             {
-                Console.Write("g[{0}] = {1}          ", i, g[i]);
+                Dispatcher.CurrentDispatcher.Invoke(new Action(() => { Program.logTextBox.Text += String.Format("g[{0}] = {1}          \r\n", i, g[i]); }), DispatcherPriority.ContextIdle);
             }
 
             funval = t.faim(ref t, ref t.z, step);
-            Console.WriteLine(" f = {0}", funval);
+            Dispatcher.CurrentDispatcher.Invoke(new Action(() => { Program.logTextBox.Text += String.Format("f = {0}\r\n", funval); }), DispatcherPriority.ContextIdle);
 
-            Console.WriteLine(" Result");
+            Dispatcher.CurrentDispatcher.Invoke(new Action(() => { Program.logTextBox.Text += "Resulr\r\n"; }), DispatcherPriority.ContextIdle);
 
             check = meg(g, dimAllP);
 
@@ -316,13 +307,15 @@ namespace diploma_v2
                         t.Q[i, j] += -h[i] * h[j] / L + dz[i] * dz[j] / L2;
 
                 Console.WriteLine(" Iteration  -  {0}", count);
+                Dispatcher.CurrentDispatcher.Invoke(new Action(() => { Program.logTextBox.Text += String.Format("Iteration  -  {0}\r\n", count); }), DispatcherPriority.ContextIdle);
                 for (int i = 0; i < dimAllP; i++)
                 {
+                    Dispatcher.CurrentDispatcher.Invoke(new Action(() => { Program.logTextBox.Text += String.Format("z[{0}] = {1}, g[{2}] = {3}\r\n", i + 1, z2[i], i + 1, g[i]); }), DispatcherPriority.ContextIdle);
                     Console.WriteLine(" z [{0}] = {1}, g[{2}] = {3}", i + 1, z2[i], i + 1, g[i]);
                 }
 
                 funval = t.faim(ref t, ref z2, step);
-                Console.WriteLine(" f = {0}", funval);
+                Dispatcher.CurrentDispatcher.Invoke(new Action(() => { Program.logTextBox.Text += String.Format("f = {0}\r\n", funval); }), DispatcherPriority.ContextIdle);
                 if (meg(t.z - z2, dimAllP) < ep)
                     flag = false;
                 t.z = z2;
@@ -335,10 +328,11 @@ namespace diploma_v2
                     flag = false;
             }
 
-            Console.WriteLine("  The solution is   ");
+            Program.lastFunval = funval;
+            Dispatcher.CurrentDispatcher.Invoke(new Action(() => { Program.logTextBox.Text += " The solution is:\r\n"; }), DispatcherPriority.ContextIdle);
             for (int i = 0; i < dimAllP; i++)
             {
-                Console.WriteLine(" z [{0}] = {1}  \n", i + 1, z2[i]);
+                Dispatcher.CurrentDispatcher.Invoke(new Action(() => { Program.logTextBox.Text += String.Format("z[{0}] = {1}\r\n", i + 1, z2[i]); }), DispatcherPriority.ContextIdle);
             }
             t.z = z2;
         }

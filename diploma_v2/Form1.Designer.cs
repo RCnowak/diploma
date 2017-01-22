@@ -49,6 +49,8 @@
             this.dFPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.logTextBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.status = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -224,11 +226,31 @@
             this.logTextBox.Size = new System.Drawing.Size(327, 527);
             this.logTextBox.TabIndex = 3;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(948, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(56, 19);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Статус:";
+            // 
+            // status
+            // 
+            this.status.AutoSize = true;
+            this.status.Location = new System.Drawing.Point(1021, 26);
+            this.status.Name = "status";
+            this.status.Size = new System.Drawing.Size(97, 19);
+            this.status.TabIndex = 5;
+            this.status.Text = "Бездействие";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1279, 579);
+            this.Controls.Add(this.status);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.logTextBox);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.textBox1);
@@ -269,6 +291,8 @@
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.TextBox logTextBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label status;
     }
 }
 

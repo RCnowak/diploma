@@ -15,21 +15,11 @@ namespace diploma_v2
 {
     public partial class Form1 : Form
     {
-        /*
-        private string[] inputMask;
-        [DllImport("kernel32.dll", SetLastError = true)]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        private static extern bool AllocConsole();
-
-        [DllImport("kernel32.dll", SetLastError = true)]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        private static extern bool FreeConsole();
-        */
-
         public Form1()
         {
             InitializeComponent();
             Program.logTextBox = logTextBox;
+            Program.status = status;
         }
 
         // Создать новую задачу
@@ -360,21 +350,21 @@ namespace diploma_v2
         // Переключение между методами
         private void gradientToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Program.method = "Gradient";
+            Program.method = Method.Spusk;
             toolStripDropDownButton1.Text = "Градиентный метод";
             Program.logTextBox.Text = String.Format("Выбран метод {0}", Program.method);
         }
 
         private void newtonToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Program.method = "Newton";
+            Program.method = Method.Newton;
             toolStripDropDownButton1.Text = "Метод Ньютона";
             Program.logTextBox.Text = String.Format("Выбран метод {0}", Program.method);
         }
 
         private void dFPToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Program.method = "DFP";
+            Program.method = Method.DFP;
             toolStripDropDownButton1.Text = "Метод ДФП";
             Program.logTextBox.Text = String.Format("Выбран метод {0}", Program.method);
         }
