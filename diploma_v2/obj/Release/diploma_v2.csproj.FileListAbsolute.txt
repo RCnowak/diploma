@@ -13,3 +13,4 @@ F:\University\Diploma\diploma_v2\diploma.git\diploma_v2\obj\Release\diploma_v2.C
 F:\University\Diploma\diploma_v2\diploma.git\diploma_v2\bin\Release\aa-DJ\diploma_v2.resources.dll
 F:\University\Diploma\diploma_v2\diploma.git\diploma_v2\obj\Release\diploma_v2.ContinueCalculation.aa-DJ.resources
 F:\University\Diploma\diploma_v2\diploma.git\diploma_v2\obj\Release\aa-DJ\diploma_v2.resources.dll
+F:\University\Diploma\diploma_v2\diploma.git\diploma_v2\obj\Release\diploma_v2.Help.resources

@@ -55,8 +55,8 @@ namespace diploma_v2
                 {
                     Program.task.dimX = Convert.ToInt32(result[1], Program.nfi);
                     Program.task.dimP = Convert.ToInt32(result[3], Program.nfi);
-                    Program.task.t0 = Convert.ToInt32(result[5], Program.nfi);
-                    Program.task.T = Convert.ToInt32(result[7], Program.nfi);
+                    Program.task.t0 = Convert.ToDouble(result[5], Program.nfi);
+                    Program.task.T = Convert.ToDouble(result[7], Program.nfi);
                     Program.task.dimTk = Convert.ToInt32(result[9], Program.nfi);
                     Program.task.step = Convert.ToDouble(result[11], Program.nfi);
                     Program.task.m = Convert.ToBoolean(result[13], Program.nfi);
@@ -105,63 +105,63 @@ namespace diploma_v2
             for (int i = 0; i < Program.dimX; i++)
             {
                 sb.Clear();
-                inputMask[i] = sb.AppendFormat("Enter the initial value for x{0}", i + 1).ToString();
+                inputMask[i] = sb.AppendFormat("Введите начальное значение фазовой переменной x{0}\r\n", i + 1).ToString();
             }
             for (int i = 0; i < Program.dimX; i++)
             {
                 sb.Clear();
-                inputMask[i + Program.dimX] = sb.AppendFormat("Enter the last value for p{0}", i + 1).ToString();
+                inputMask[i + Program.dimX] = sb.AppendFormat("Введите конченое значение сопряженной переменной p{0}\r\n", i + 1).ToString();
             }
             sb.Clear();
-            inputMask[2 * Program.dimX] = "Enter the initial value of u";
+            inputMask[2 * Program.dimX] = "Начальные значения u:";
             for (int i = 0, k = 0; i < Program.dimAllP; i++)
             {
                 for (int j = i; j - i < Program.dimP; j++)
                 {
                     sb.Clear();
-                    inputMask[j + 1 + 2 * Program.dimX] = sb.AppendFormat("Enter the v{0}{1}", j - i, k).ToString();
+                    inputMask[j + 1 + 2 * Program.dimX] = sb.AppendFormat("Введите v{0}{1}\r\n", j - i, k).ToString();
                 }
                 i += Program.dimP;
                 if (i < Program.dimAllP - 1)
                 {
                     k++;
                     sb.Clear();
-                    inputMask[i + 1 + 2 * Program.dimX] = sb.AppendFormat("Enter the t{0}", k).ToString();
+                    inputMask[i + 1 + 2 * Program.dimX] = sb.AppendFormat("Введите t{0}\r\n", k).ToString();
                 }
             }
 
             sb.Clear();
-            inputMask[1 + 2 * Program.dimX + Program.dimAllP] = "Functions:";
+            inputMask[1 + 2 * Program.dimX + Program.dimAllP] = "Функции:";
             sb.Clear();
-            inputMask[2 + 2 * Program.dimX + Program.dimAllP] = "Enter the function to minimize";
+            inputMask[2 + 2 * Program.dimX + Program.dimAllP] = "Введите целевую фукнцию\r\n";
 
             for (int i = 0; i < Program.dimX; i++)
             {
                 sb.Clear();
-                inputMask[i + 3 + 2 * Program.dimX + Program.dimAllP] = sb.AppendFormat("Enter the terminal part of dx{0}dt", (i + 1)).ToString();
+                inputMask[i + 3 + 2 * Program.dimX + Program.dimAllP] = sb.AppendFormat("Введите терминальную часть ẋ{0}\r\n", (i + 1)).ToString();
             }
             for (int i = 0; i < Program.dimX; i++)
             {
                 sb.Clear();
-                inputMask[i + 3 + 3 * Program.dimX + Program.dimAllP] = sb.AppendFormat("Enter the integral part of dx{0}dt", i + 1).ToString();
+                inputMask[i + 3 + 3 * Program.dimX + Program.dimAllP] = sb.AppendFormat("Введите интегральную часть ẋ{0}\r\n", i + 1).ToString();
             }
 
             for (int i = 0; i < Program.dimX; i++)
             {
                 sb.Clear();
-                inputMask[i + 3 + 4 * Program.dimX + Program.dimAllP] = sb.AppendFormat("Enter the terminal part of dx{0}/dt by du", i + 1).ToString();
+                inputMask[i + 3 + 4 * Program.dimX + Program.dimAllP] = sb.AppendFormat("Введите терминальную часть dẋ{0}/du\r\n", i + 1).ToString();
             }
             for (int i = 0; i < Program.dimX; i++)
             {
                 sb.Clear();
-                inputMask[i + 3 + 5 * Program.dimX + Program.dimAllP] = sb.AppendFormat("Enter the integral part of dx{0}/dt by du", i + 1).ToString();
+                inputMask[i + 3 + 5 * Program.dimX + Program.dimAllP] = sb.AppendFormat("Введите интегральную часть dẋ{0}/du\r\n", i + 1).ToString();
             }
             for (int i = 0; i < Program.dimX; i++)
             {
                 for (int j = 0; j < Program.dimX; j++)
                 {
                     sb.Clear();
-                    inputMask[j + 3 + 6 * Program.dimX + Program.dimAllP + i * Program.dimX] = sb.AppendFormat("Enter the terminal part of dx{0}/dt by dx{1}", i + 1, j + 1).ToString();
+                    inputMask[j + 3 + 6 * Program.dimX + Program.dimAllP + i * Program.dimX] = sb.AppendFormat("Введите терминальную часть dẋ{0}/dx{1}\r\n", i + 1, j + 1).ToString();
                 }
             }
             for (int i = 0; i < Program.dimX; i++)
@@ -169,7 +169,7 @@ namespace diploma_v2
                 for (int j = 0; j < Program.dimX; j++)
                 {
                     sb.Clear();
-                    inputMask[j + 3 + Program.dimX * (6 + Program.dimX) + i * Program.dimX + Program.dimAllP] = sb.AppendFormat("Enter the integral part of dx{0}/dt by dx{1}", i + 1, j + 1).ToString();
+                    inputMask[j + 3 + Program.dimX * (6 + Program.dimX) + i * Program.dimX + Program.dimAllP] = sb.AppendFormat("Введите интегральную часть dẋ{0}/dx{1}\r\n", i + 1, j + 1).ToString();
                 }
             }
             textBox1.Text = string.Join("\r\n", inputMask);
@@ -404,12 +404,19 @@ namespace diploma_v2
 
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.Title = "Сохранить задачу";
-            saveFileDialog1.ShowDialog();
-            // получаем выбранный файл
-            string filename = saveFileDialog1.FileName;
+            var result = saveFileDialog1.ShowDialog();
             // сохраняем текст в файл
-            System.IO.File.WriteAllText(filename, strS);
-            MessageBox.Show("Файл сохранен");
+            if (result == DialogResult.OK) {
+                System.IO.File.WriteAllText(saveFileDialog1.FileName, strS);
+                MessageBox.Show("Файл сохранен");
+            }
+
+        }
+
+        private void helpToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Help helpWindow = new Help();
+            helpWindow.Show();
         }
     }
 }

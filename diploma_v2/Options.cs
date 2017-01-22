@@ -15,6 +15,12 @@ namespace diploma_v2
         public Options()
         {
             InitializeComponent();
+
+            textBox1.Text = Convert.ToString(Program.task.eps);
+            textBox2.Text = Convert.ToString(Program.task.ep);
+            textBox3.Text = Convert.ToString(Program.task.discr);
+            textBox4.Text = Convert.ToString(Program.task.it);
+            textBox5.Text = Convert.ToString(Program.task.n);
         }
 
         private void button1_Click(object sender, EventArgs e)

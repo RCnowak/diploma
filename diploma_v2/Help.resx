@@ -117,41 +117,60 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>132, 17</value>
-  </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="toolStripDropDownButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
-        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
-        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
-        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
-        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
-        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
-        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
-        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
-        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
-        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="toolStripButton3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
-        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
-        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
-        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
-        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
-        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
-        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
-        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
-        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
-        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
-</value>
+  <data name="textBox1.Text" xml:space="preserve">
+    <value>Инструкция по эксплуатации
+
+Данное приложение предназначено для решения задач оптимального управления с интегродифференциальными связями с одним управлением.
+
+1. Создание задачи.
+Для создания задачи следует выбрать меню "Файл -&gt; Новая задача". Далее ввести размерность Х, размерность параметризации управления, начальный и конечный моменты времени,
+количество моментов переключения, шаг интегрирования и выбрать способ вычисления производных.
+Внимание! При вводе чисел с плавующей точкой для разделения целой и дробной части следует использовать "."!
+Далее в основной области программы появится заготовка для ввода данны задачи. Следуйте указаниям, введите то, что требуется, каждый раз начиная с новой строки.
+Если отсутствует интегральная или терминальная часть, то следует ввести 0.
+
+Например:
+Enter the initial value for x1
+0
+Enter the initial value for x2
+1
+Enter the last value for p1
+0
+Enter the last value for p2
+0
+Enter the initial value of u
+Enter the v00
+0.1
+Enter the v10
+0.3
+...
+Enter the integral part of dx2dt
+0
+Enter the terminal part of dx1/dt by du
+1
+
+При вводе формул допускаются следующих операций +, -, *, /, ^, тригометрические функции sin, cos, tg, ctg, а также получение числа е и
+натруального логарифма ln. Вводить формулу следует без пробелов! Допустимыми символами названий переменных являются x{номер икса}, u, s и t.
+Примеры формул:
+(t*x1-u-t^2+t+ln(e))^2
+(t*u+x1+1-s-t)*e^(s*(t-s))
+2*u-2*t*x1+2*t^2-2*t-2
+
+2. Запуск решения.
+Создав новую задачу или загрузив старую, выберете метод оптимизации (по умолчанию включен Градиентный метод) и нажмите кнопку "Запустить" на панели.
+В правой области экрана начнут появляться результаты промежуточных вычислений. В поле "Статус" отобразится статус решения ("Запущен метод ...").
+После завершения всех вычислений появится окно с результатами, в котором можно будет сохранить результаты, а также перезапустить задачу другим методом,
+используя результаты предыдущего запуска, как начальное приближение для нового.
+
+3. Сохранение задачи.
+Всю информацию о задачи можно сохранить кликнув меню "Файл -&gt; Сохранить". Программа сохранит данные в нужном ей формате. Не следует редактировать данные 
+напрямую из файла! Это может привести к ошибке парсинга при загрузке.
+
+4. Загрузка задачи.
+Загрузить задачу можно через меню "Файл -&gt; Загрузить". Появится окно, в котором надо указать файл, в котором хранится информация о сохраненном файле.
+
+5. Конфигурирование хода решения.
+Зайдя в меню "Задача -&gt; Опции" можно указать точность вычислений, количество итераций метода, размерность дискретного хранения и количество значений 
+функций для численного дифференцирования</value>
   </data>
 </root>

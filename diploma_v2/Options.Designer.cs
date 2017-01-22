@@ -44,15 +44,16 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 9);
+            this.label1.Location = new System.Drawing.Point(41, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(150, 26);
+            this.label1.Size = new System.Drawing.Size(144, 26);
             this.label1.TabIndex = 0;
-            this.label1.Text = "the accuracy of calculation of \r\nintegrals and derivatives";
+            this.label1.Text = "Точность вычисления\r\nпроизводных и интегралов";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(67, 38);
+            this.textBox1.Location = new System.Drawing.Point(83, 38);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(61, 20);
             this.textBox1.TabIndex = 1;
@@ -60,15 +61,16 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(26, 61);
+            this.label2.Location = new System.Drawing.Point(52, 61);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(146, 13);
+            this.label2.Size = new System.Drawing.Size(118, 26);
             this.label2.TabIndex = 2;
-            this.label2.Text = "norm of the gradient precision";
+            this.label2.Text = "Точность вычисления\r\nнормы градиента";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(67, 80);
+            this.textBox2.Location = new System.Drawing.Point(83, 90);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(61, 20);
             this.textBox2.TabIndex = 3;
@@ -76,15 +78,15 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(5, 103);
+            this.label3.Location = new System.Drawing.Point(26, 113);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(180, 13);
+            this.label3.Size = new System.Drawing.Size(192, 13);
             this.label3.TabIndex = 4;
-            this.label3.Text = "the dimension of the discrete storage";
+            this.label3.Text = "Размерность дискретного хранения";
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(67, 119);
+            this.textBox3.Location = new System.Drawing.Point(83, 129);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(61, 20);
             this.textBox3.TabIndex = 5;
@@ -92,15 +94,15 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(51, 142);
+            this.label4.Location = new System.Drawing.Point(41, 152);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(94, 13);
+            this.label4.Size = new System.Drawing.Size(156, 13);
             this.label4.TabIndex = 6;
-            this.label4.Text = "number of iteration";
+            this.label4.Text = "Количество итераций метода";
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(67, 158);
+            this.textBox4.Location = new System.Drawing.Point(83, 168);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(61, 20);
             this.textBox4.TabIndex = 7;
@@ -108,17 +110,18 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(18, 181);
+            this.label5.Location = new System.Drawing.Point(23, 191);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(167, 26);
+            this.label5.Size = new System.Drawing.Size(195, 26);
             this.label5.TabIndex = 8;
-            this.label5.Text = "the number of values ​​of functions \r\nfor the numerical differentiation";
+            this.label5.Text = "Количество значений функции\r\nдля численного дифференцирования\r\n";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(67, 247);
+            this.button1.Location = new System.Drawing.Point(69, 246);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(61, 28);
+            this.button1.Size = new System.Drawing.Size(87, 39);
             this.button1.TabIndex = 9;
             this.button1.Text = "OK";
             this.button1.UseVisualStyleBackColor = true;
@@ -126,7 +129,7 @@
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(67, 210);
+            this.textBox5.Location = new System.Drawing.Point(83, 220);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(61, 20);
             this.textBox5.TabIndex = 10;
@@ -135,7 +138,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(201, 286);
+            this.ClientSize = new System.Drawing.Size(233, 289);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label5);
@@ -148,7 +151,7 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Name = "Options";
-            this.Text = "Options";
+            this.Text = "Опции";
             this.ResumeLayout(false);
             this.PerformLayout();
 
