@@ -52,7 +52,7 @@ namespace diploma_v2
         }
         public static bool isThirdclass(string op1)
         {
-            if (op1 == "sin" || op1 == "cos" || op1 == "tg" || op1 == "ctg" || op1 == "ln" || op1 == "neg")
+            if (op1 == "sin" || op1 == "cos" || op1 == "tg" || op1 == "ctg" || op1 == "ln" || op1 == "neg" || op1 == "cut")
                 return true;
             else return false;
         }
@@ -197,6 +197,8 @@ namespace diploma_v2
                 case 'c':
                     if (v[1] == 'o')
                         return Math.Cos(x);
+                    else if (v[1] == 'u')
+                        return Program.Cut(x);
                     else
                         return 1 / Math.Tan(x);
                 case 't':
@@ -291,7 +293,7 @@ namespace diploma_v2
                         }
                     case '-':
                         {
-                            if (formula[i - 1] == '=' || formula[i - 1] == '(')
+                            if (formula[i - 1] == '=' || formula[i - 1] == '(' || i - 1 == -1)
                                 bufer = "neg";
                             else
                                 bufer = "-";
@@ -342,9 +344,13 @@ namespace diploma_v2
                             {
                                 bufer = "cos";
                             }
-                            else
+                            else if (i < formula.Length - 2 && formula[i + 1] == 't')
                             {
                                 bufer = "ctg";
+                            }
+                            else
+                            {
+                                bufer = "cut";
                             }
                             i += 2;
                             break;

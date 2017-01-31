@@ -22,11 +22,11 @@ namespace diploma_v2
 
             textBox1.AppendText(String.Format("Используемый метод: {0}" + Environment.NewLine, Program.method));
             textBox1.AppendText(String.Format("f = {0}" + Environment.NewLine, Program.lastFunval));
-            for (int i = 0, k = 0, t = 1; i < Program.task.dimAllP; i++)
+            for (int i = 0, k = 0; i < Program.task.dimAllP; i++)
             {
                 for (int j = i; j - i < Program.dimP; j++)
                 {
-                    textBox1.AppendText(String.Format("v{0}{1} = " + Program.task.z[i].ToString() + Environment.NewLine, j - i, k));
+                    textBox1.AppendText(String.Format("v{0}{1} = " + Program.task.z[j].ToString() + Environment.NewLine, j - i, k));
                 }
                 i += Program.dimP;
                 if (i < Program.dimAllP - 1)

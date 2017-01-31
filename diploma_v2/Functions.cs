@@ -61,7 +61,7 @@ namespace diploma_v2
         }
 
         // Функция положительной срезки
-        double Cut(double value)
+        public static double Cut(double value)
         {
             if (value > 0)
             {
